@@ -4,16 +4,16 @@
 
 ### Student Info
 
--   Name: YOUR NAME
--   Section: ##
+-   Name: Chinmay Gaikwad
+-   Section: 5
 
 ## Game Design
 
--   Camera Orientation: _How are the art assets viewed from? (ie. topdown or side)_
--   Camera Movement: _How does the camera move in your game? (if at all)_
--   Player Health: _How are you handling player health? (healthbar, lives, ?)_
--   End Condition: _How does a game/round/level end?_
--   Scoring: _How does the player earn points in your game?_
+-   Camera Orientation: Topdown
+-   Camera Movement: No movement, only player object moves
+-   Player Health: 3 Hitpoints
+-   End Condition: Endless loop, till player loses all their HP
+-   Scoring: Killing enemies, multiplier over time (if not damaged)
 
 ### Game Description
 
@@ -22,11 +22,11 @@ _A brief explanation of your game. Inculde what is the objective for the player.
 ### Controls
 
 -   Movement
-    -   Up: 
-    -   Down: 
-    -   Left: 
-    -   Right: 
--   Fire: 
+    -   Up: W
+    -   Down: S
+    -   Left: A
+    -   Right: D
+-   Fire: Space
 
 ## You Additions
 
