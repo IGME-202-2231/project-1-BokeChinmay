@@ -10,14 +10,16 @@
 ## Game Design
 
 -   Camera Orientation: Topdown
--   Camera Movement: No movement, only player object moves
+-   Camera Movement: No movement, only the player object moves
 -   Player Health: 3 Hitpoints
--   End Condition: Endless loop, till player loses all their HP
+-   End Condition: Endless loop, till the player loses all their HP
 -   Scoring: Killing enemies, multiplier over time (if not damaged)
 
 ### Game Description
 
-_A brief explanation of your game. Inculde what is the objective for the player. Think about what would go on the back of a game box._
+_A brief explanation of your game. Include what is the objective for the player. Think about what would go on the back of a game box._
+
+Destroy all the asteroids.
 
 ### Controls
 
@@ -31,6 +33,8 @@ _A brief explanation of your game. Inculde what is the objective for the player.
 ## You Additions
 
 _List out what you added to your game to make it different for you_
+
+Some bigger enemies split into two.
 
 ## Sources
 
