@@ -1,3 +1,3 @@
 # Exercises
 
--   [Project](../builds/Build)
+-   [Project](../builds)
