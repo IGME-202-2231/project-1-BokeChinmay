@@ -6,7 +6,7 @@ using UnityEngine.InputSystem;
 public class PlayerInput : MonoBehaviour
 {
     [SerializeField]
-    PlayerMovement movementController;
+    MovementController movementController;
 
     public void OnMove(InputAction.CallbackContext context)
     {

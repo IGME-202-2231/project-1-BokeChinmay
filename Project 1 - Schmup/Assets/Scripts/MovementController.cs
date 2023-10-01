@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerMovement : MonoBehaviour
+public class MovementController : MonoBehaviour
 {
     //Position Vector
     Vector3 position;
@@ -69,14 +69,15 @@ public class PlayerMovement : MonoBehaviour
         }
 
         //Along Y-Axis
-        if (position.y >= 0)
+        if (position.y >= -(height/4))
         {
-            position.y = 0;
+            position.y = -(height / 4);
         }
         else if (position.y <= -(height / 2))
         {
             position.y = -(height / 2);
         }
 
+        transform.position = position;
     }
 }
