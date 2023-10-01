@@ -1,5 +1,4 @@
-# Project PROJECT_NAME
-
+Asteroid Boogaloo
 [Markdown Cheatsheet](https://github.com/adam-p/markdown-here/wiki/Markdown-Here-Cheatsheet)
 
 ### Student Info
