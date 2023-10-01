@@ -40,6 +40,8 @@ Some bigger enemies split into two.
 -   _List all project sources here –models, textures, sound clips, assets, etc._
 -   _If an asset is from the Unity store, include a link to the page and the author’s name_
 
+-   https://www.artstation.com/artwork/ZGoDNR - Alexey Rozhkov
+
 ## Known Issues
 
 _List any errors, lack of error checking, or specific information that I need to know to run your program_
