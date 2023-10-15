@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
@@ -45,6 +46,7 @@ public class EnemySpawner : MonoBehaviour
     public SpriteRenderer SpawnAsteroid()
     {
         return Instantiate(asteroidPrefab);
+
     }
 
     public void Spawn()
@@ -53,7 +55,7 @@ public class EnemySpawner : MonoBehaviour
 
         for (int i = 0; i < Random.Range(1, 20); i++)
         {
-            spawnedAsteroid.Renderer.Add(SpawnAsteroid());
+            spawnedAsteroids.Add(SpawnAsteroid());
 
             //Set Position
             spawnedAsteroids[i].transform.position = new Vector2(Random.Range(0 - width / 2, width), height);
