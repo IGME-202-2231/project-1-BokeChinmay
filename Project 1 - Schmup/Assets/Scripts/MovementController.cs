@@ -12,7 +12,7 @@ public class MovementController : MonoBehaviour
     float speed = 1.0f;
 
     //Direction Vector
-    Vector3 direction = Vector3.right;
+    Vector3 direction = Vector3.zero;
 
     //Velocity Vector
     Vector3 velocity = Vector3.zero;
@@ -35,7 +35,6 @@ public class MovementController : MonoBehaviour
             }
         }
     }
-
 
     // Start is called before the first frame update
     void Start()
