@@ -233,6 +233,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rectSize: {x: 1, y: 1}
+--- !u!114 &915737294
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 915737282}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44918323657c19e498218b6fd19ca22c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectilePrefab: {fileID: 2699047967239486535, guid: ff0c8a5494d89dc48b637c60c44b136d, type: 3}
+  playerObject: {fileID: 915737288}
 --- !u!1 &1932280833
 GameObject:
   m_ObjectHideFlags: 0
@@ -393,6 +407,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 179.435
       objectReference: {fileID: 0}
+    - target: {fileID: 1105630033019452736, guid: b50272dc256d19049a9fab3183117ac9, type: 3}
+      propertyPath: m_ActionEvents.Array.data[1].m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1105630033019452736, guid: b50272dc256d19049a9fab3183117ac9, type: 3}
+      propertyPath: m_ActionEvents.Array.data[1].m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1105630033019452736, guid: b50272dc256d19049a9fab3183117ac9, type: 3}
+      propertyPath: m_ActionEvents.Array.data[1].m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 3979646910112527784, guid: b50272dc256d19049a9fab3183117ac9, type: 3}
       propertyPath: m_Name
       value: Spaceship
@@ -404,4 +430,7 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 3979646910112527784, guid: b50272dc256d19049a9fab3183117ac9, type: 3}
       insertIndex: -1
       addedObject: {fileID: 915737288}
+    - targetCorrespondingSourceObject: {fileID: 3979646910112527784, guid: b50272dc256d19049a9fab3183117ac9, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 915737294}
   m_SourcePrefab: {fileID: 100100000, guid: b50272dc256d19049a9fab3183117ac9, type: 3}

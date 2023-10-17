@@ -48,14 +48,28 @@ public class SpriteInfo : MonoBehaviour
         set { isColliding = value; }
     }
 
+    
     public SpriteRenderer Renderer
     {
         get { return renderer; } 
         set { renderer = value; }
     }
+    
 
     private void Start()
     {
         position = transform.position;
+    }
+
+    private void Update()
+    {
+        if(IsColliding)
+        {
+            renderer.color = Color.red;
+        }
+        else
+        {
+            renderer.color = Color.white;
+        }
     }
 }

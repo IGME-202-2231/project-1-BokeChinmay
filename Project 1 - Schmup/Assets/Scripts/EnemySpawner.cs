@@ -10,7 +10,6 @@ public class EnemySpawner : MonoBehaviour
 
     [SerializeField]
     List<Sprite> asteroidImages = new List<Sprite>();
-
     List<SpriteRenderer> spawnedAsteroids = new List<SpriteRenderer>();
 
     //Position Vector
@@ -50,6 +49,8 @@ public class EnemySpawner : MonoBehaviour
         {
             position = transform.position;
         }
+
+        Spawn();
     }
 
     // Update is called once per frame
@@ -66,14 +67,13 @@ public class EnemySpawner : MonoBehaviour
             velocity = direction * speed * Time.deltaTime;
 
             //Adding velocity to the position to actually move the object
-            position += velocity;
+            sprite.transform.position += velocity;
         }
     }
 
     public SpriteRenderer SpawnAsteroid()
     {
         return Instantiate(asteroidPrefab);
-
     }
 
     public void Spawn()
@@ -85,6 +85,7 @@ public class EnemySpawner : MonoBehaviour
             spawnedAsteroids.Add(SpawnAsteroid());
 
             //Set Position
+            spawnedAsteroids[i].GetComponent<SpriteInfo>();
             spawnedAsteroids[i].transform.position = new Vector2(Random.Range(0 - width / 2, width), height);
 
             //Picking one of the two asteroids

@@ -20,7 +20,7 @@ public class CollisionManager : MonoBehaviour
 
         foreach (var collidable in enemyCollidables)
         {
-            collidable.Renderer = renderers[0];
+            collidable.Renderer = renderers[0]; 
         }
         AABB();
     }
