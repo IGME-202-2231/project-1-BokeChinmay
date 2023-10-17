@@ -60,16 +60,4 @@ public class SpriteInfo : MonoBehaviour
     {
         position = transform.position;
     }
-
-    private void Update()
-    {
-        if(IsColliding)
-        {
-            renderer.color = Color.red;
-        }
-        else
-        {
-            renderer.color = Color.white;
-        }
-    }
 }

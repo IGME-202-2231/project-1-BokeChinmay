@@ -6,12 +6,12 @@ using UnityEngine.InputSystem;
 public class PlayerFire : MonoBehaviour
 {
     [SerializeField]
-    SpriteRenderer projectilePrefab;
+    SpriteInfo projectilePrefab;
 
     [SerializeField]
     SpriteInfo playerObject;
 
-    List<SpriteRenderer> spawnedProjectiles = new List<SpriteRenderer>();
+    List<SpriteInfo> spawnedProjectiles = new List<SpriteInfo>();
 
     //Position Vector
     Vector3 position;
@@ -28,6 +28,12 @@ public class PlayerFire : MonoBehaviour
     Camera cam;
     float height;
     float width;
+
+    //Property 
+    public List<SpriteInfo> SpawnedProjectiles
+    {
+        get { return spawnedProjectiles; }
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -60,17 +66,16 @@ public class PlayerFire : MonoBehaviour
 
     }
 
-    public SpriteRenderer SpawnProjectile()
+    public SpriteInfo SpawnProjectile()
     {
-        return Instantiate(projectilePrefab, 
-                           new Vector3 (playerObject.transform.position.x, playerObject.transform.position.y + 1, -1), 
+        return Instantiate(projectilePrefab,
+                           new Vector3(playerObject.transform.position.x, playerObject.transform.position.y + 1, -1),
                            Quaternion.identity);
-
     }
 
     public void Spawn()
     {
-        SpriteRenderer newProjectile = SpawnProjectile();
+        SpriteInfo newProjectile = SpawnProjectile();
         spawnedProjectiles.Add(newProjectile);
 
         newProjectile.transform.Rotate(new Vector3(0, 0, 90));
