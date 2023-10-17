@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6577355513094384732}
   - component: {fileID: 3546568700752689255}
   - component: {fileID: 1105630033019452736}
+  - component: {fileID: 3495538548846218150}
   m_Layer: 0
   m_Name: Spaceship
   m_TagString: Untagged
@@ -163,3 +164,16 @@ MonoBehaviour:
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!114 &3495538548846218150
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3979646910112527784}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5241df37f93a545488b72b6e6a87c6cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rectSize: {x: 1, y: 1}

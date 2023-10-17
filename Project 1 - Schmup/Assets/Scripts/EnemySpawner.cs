@@ -6,11 +6,11 @@ using UnityEngine;
 public class EnemySpawner : MonoBehaviour
 {
     [SerializeField]
-    SpriteRenderer asteroidPrefab;
+    SpriteInfo asteroidPrefab;
 
     [SerializeField]
     List<Sprite> asteroidImages = new List<Sprite>();
-    List<SpriteRenderer> spawnedAsteroids = new List<SpriteRenderer>();
+    List<SpriteInfo> spawnedAsteroids = new List<SpriteInfo>();
 
     //Position Vector
     Vector3 position;
@@ -31,7 +31,7 @@ public class EnemySpawner : MonoBehaviour
 
 
     //Property
-    public List<SpriteRenderer> SpawnedAsteroids
+    public List<SpriteInfo> SpawnedAsteroids
     {
         get { return spawnedAsteroids; }
     }
@@ -61,7 +61,7 @@ public class EnemySpawner : MonoBehaviour
             Spawn();
         }
 
-        foreach (SpriteRenderer sprite in spawnedAsteroids)
+        foreach (SpriteInfo sprite in spawnedAsteroids)
         {
             //Velocity is the direction vector times the speed and elapsed time
             velocity = direction * speed * Time.deltaTime;
@@ -71,21 +71,21 @@ public class EnemySpawner : MonoBehaviour
         }
     }
 
-    public SpriteRenderer SpawnAsteroid()
+    public SpriteInfo SpawnAsteroid()
     {
         return Instantiate(asteroidPrefab);
     }
 
     public void Spawn()
     {
-        DestroyAsteroids();
+        //DestroyAsteroids();
 
         for (int i = 0; i < Random.Range(1, 20); i++)
         {
             spawnedAsteroids.Add(SpawnAsteroid());
 
             //Set Position
-            spawnedAsteroids[i].GetComponent<SpriteInfo>();
+            
             spawnedAsteroids[i].transform.position = new Vector2(Random.Range(0 - width / 2, width), height);
 
             //Picking one of the two asteroids
@@ -93,18 +93,18 @@ public class EnemySpawner : MonoBehaviour
 
             if (randValue <= 20)
             {
-                spawnedAsteroids[i].sprite = asteroidImages[0];
+                spawnedAsteroids[i].Renderer.sprite = asteroidImages[0];
             }
             else
             {
-                spawnedAsteroids[i].sprite = asteroidImages[1];
+                spawnedAsteroids[i].Renderer.sprite = asteroidImages[1];
             }
         }
     }
 
     public void DestroyAsteroids()
     {
-        foreach (SpriteRenderer asteroid in spawnedAsteroids)
+        foreach (SpriteInfo asteroid in spawnedAsteroids)
         {
             Destroy(asteroid.gameObject);
         }
