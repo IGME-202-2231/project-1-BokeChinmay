@@ -86,7 +86,7 @@ public class EnemySpawner : MonoBehaviour
 
             //Set Position
             
-            spawnedAsteroids[i].transform.position = new Vector2(Random.Range(0 - width / 2, width), height);
+            spawnedAsteroids[i].transform.position = new Vector2(Random.Range(0 - width / 2, 0 + width /2), 0 + height/2);
 
             //Picking one of the two asteroids
             float randValue = Random.Range(1, 101);
