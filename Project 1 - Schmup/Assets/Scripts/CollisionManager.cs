@@ -7,6 +7,7 @@ public class CollisionManager : MonoBehaviour
     [SerializeField]
     SpriteInfo playerCollidable = new SpriteInfo();
 
+    List<SpriteRenderer> renderers = new List<SpriteRenderer>();
     List<SpriteInfo> enemyCollidables = new List<SpriteInfo>();
 
     [SerializeField]
@@ -15,7 +16,12 @@ public class CollisionManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        enemyCollidables = spawner.SpawnedAsteroids;
+        renderers = spawner.SpawnedAsteroids;
+
+        foreach (var collidable in enemyCollidables)
+        {
+            collidable.Renderer = renderers[0]; 
+        }
         AABB();
     }
 

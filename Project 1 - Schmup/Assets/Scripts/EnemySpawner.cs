@@ -10,8 +10,19 @@ public class EnemySpawner : MonoBehaviour
 
     [SerializeField]
     List<Sprite> asteroidImages = new List<Sprite>();
+    List<SpriteRenderer> spawnedAsteroids = new List<SpriteRenderer>();
 
-    List<SpriteInfo> spawnedAsteroids = new List<SpriteInfo>();
+    //Position Vector
+    Vector3 position;
+
+    //How fast the vehicle will move in units per second
+    float speed = 4.0f;
+
+    //Direction Vector
+    Vector3 direction = Vector3.down;
+
+    //Velocity Vector
+    Vector3 velocity = Vector3.zero;
 
     //Height and Width of Scene
     Camera cam;
@@ -20,7 +31,7 @@ public class EnemySpawner : MonoBehaviour
 
 
     //Property
-    public List<SpriteInfo> SpawnedAsteroids
+    public List<SpriteRenderer> SpawnedAsteroids
     {
         get { return spawnedAsteroids; }
     }
@@ -32,6 +43,14 @@ public class EnemySpawner : MonoBehaviour
         cam = Camera.main;
         height = 2f * cam.orthographicSize;
         width = height * cam.aspect;
+
+        //Taking the object's original position
+        foreach (var asteroid in spawnedAsteroids)
+        {
+            position = transform.position;
+        }
+
+        Spawn();
     }
 
     // Update is called once per frame
@@ -41,12 +60,20 @@ public class EnemySpawner : MonoBehaviour
         {
             Spawn();
         }
+
+        foreach (SpriteRenderer sprite in spawnedAsteroids)
+        {
+            //Velocity is the direction vector times the speed and elapsed time
+            velocity = direction * speed * Time.deltaTime;
+
+            //Adding velocity to the position to actually move the object
+            sprite.transform.position += velocity;
+        }
     }
 
     public SpriteRenderer SpawnAsteroid()
     {
         return Instantiate(asteroidPrefab);
-
     }
 
     public void Spawn()
@@ -58,6 +85,7 @@ public class EnemySpawner : MonoBehaviour
             spawnedAsteroids.Add(SpawnAsteroid());
 
             //Set Position
+            spawnedAsteroids[i].GetComponent<SpriteInfo>();
             spawnedAsteroids[i].transform.position = new Vector2(Random.Range(0 - width / 2, width), height);
 
             //Picking one of the two asteroids
@@ -65,18 +93,18 @@ public class EnemySpawner : MonoBehaviour
 
             if (randValue <= 20)
             {
-                spawnedAsteroids[i].Renderer.sprite = asteroidImages[0];
+                spawnedAsteroids[i].sprite = asteroidImages[0];
             }
             else
             {
-                spawnedAsteroids[i].Renderer.sprite = asteroidImages[1];
+                spawnedAsteroids[i].sprite = asteroidImages[1];
             }
         }
     }
 
     public void DestroyAsteroids()
     {
-        foreach (SpriteInfo asteroid in spawnedAsteroids)
+        foreach (SpriteRenderer asteroid in spawnedAsteroids)
         {
             Destroy(asteroid.gameObject);
         }
