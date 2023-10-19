@@ -124,8 +124,17 @@ public class CollisionManager : MonoBehaviour
                         projectileCollidables[j].IsColliding = false;
                     }
                 }
+
+                if (enemyCollidables[i].transform.position.y < (0 - height / 2))
+                {
+                    enemyCollidables[i].IsColliding = true;
+                    Destroy(enemyCollidables[i].gameObject);
+                    enemyCollidables.Remove(enemyCollidables[i]);
+                    newIteration = true;
+                    break;
+                }
             }
         }
-        while (newIteration);
+        while (newIteration != true);
     }
 }
