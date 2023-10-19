@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class CollisionManager : MonoBehaviour
@@ -31,8 +32,11 @@ public class CollisionManager : MonoBehaviour
         height = 2f * cam.orthographicSize;
         width = height * cam.aspect;
 
-        playerEnemy();
-        projectileEnemy();
+        if(enemyCollidables.Count > 0 )
+        {
+            playerEnemy();
+            projectileEnemy();
+        }
     }
 
     // Update is called once per frame
@@ -63,77 +67,85 @@ public class CollisionManager : MonoBehaviour
         do
         {
             newIteration = false;
-            for (int i = 0; i < enemyCollidables.Count; i++)
+            if(enemyCollidables.Count > 0)
             {
-                if ((enemyCollidables[i].IsColliding = AABBCheck(playerCollidable, enemyCollidables[i])))
+                //newIteration = false;
+                for (int i = 0; i < enemyCollidables.Count; i++)
                 {
-                    playerCollidable.IsColliding = true;
-                    Destroy(enemyCollidables[i].gameObject);
-                    Destroy(spawner.SpawnedAsteroids[i].gameObject);
-                    enemyCollidables.Remove(enemyCollidables[i]);
-                    spawner.SpawnedAsteroids.Remove(spawner.SpawnedAsteroids[i]);
-                    newIteration = true;
-                    break;
-                }
-                else
-                {
-                    playerCollidable.IsColliding = false;
-                }
-            }
-        }
-        while (newIteration);
-    }
-
-    void projectileEnemy()
-    {
-        bool newIteration;
-        do
-        {
-            newIteration = false;
-            for (int i = 0; i < enemyCollidables.Count; i++)
-            {
-                for (int j = 0; j < projectileCollidables.Count; j++)
-                {
-                    if ((enemyCollidables[i].IsColliding = AABBCheck(projectileCollidables[j], enemyCollidables[i])))
+                    if ((enemyCollidables[i].IsColliding = AABBCheck(playerCollidable, enemyCollidables[i])))
                     {
-                        projectileCollidables[j].IsColliding = true;
-                        Destroy(projectileCollidables[j].gameObject);
-                        Destroy(projectiles.SpawnedProjectiles[j].gameObject);
+                        playerCollidable.IsColliding = true;
                         Destroy(enemyCollidables[i].gameObject);
                         Destroy(spawner.SpawnedAsteroids[i].gameObject);
-                        projectileCollidables.Remove(projectileCollidables[j]);
-                        projectiles.SpawnedProjectiles.Remove(projectiles.SpawnedProjectiles[j]);
                         enemyCollidables.Remove(enemyCollidables[i]);
                         spawner.SpawnedAsteroids.Remove(spawner.SpawnedAsteroids[i]);
                         newIteration = true;
                         break;
                     }
-                    else if (projectileCollidables[j].transform.position.y > height)
+                    else
                     {
-                        projectileCollidables[j].IsColliding = true;
-                        Destroy(projectileCollidables[j].gameObject);
-                        Destroy(projectiles.SpawnedProjectiles[j].gameObject);
-                        projectileCollidables.Remove(projectileCollidables[j]);
-                        projectiles.SpawnedProjectiles.Remove(projectiles.SpawnedProjectiles[j]);
+                        playerCollidable.IsColliding = false;
+                    }
+                }
+            }
+            
+        }
+        while (newIteration != true);
+    }
+
+    void projectileEnemy()
+    {
+        bool newIteration = true;
+        do
+        {
+            if (enemyCollidables.Count > 0)
+            {
+                //newIteration = false;
+                for (int i = 0; i < enemyCollidables.Count; i++)
+                {
+                    for (int j = 0; j < projectileCollidables.Count; j++)
+                    {
+                        if ((enemyCollidables[i].IsColliding = AABBCheck(projectileCollidables[j], enemyCollidables[i])))
+                        {
+                            projectileCollidables[j].IsColliding = true;
+                            Destroy(projectileCollidables[j].gameObject);
+                            Destroy(projectiles.SpawnedProjectiles[j].gameObject);
+                            Destroy(enemyCollidables[i].gameObject);
+                            Destroy(spawner.SpawnedAsteroids[i].gameObject);
+                            projectileCollidables.Remove(projectileCollidables[j]);
+                            projectiles.SpawnedProjectiles.Remove(projectiles.SpawnedProjectiles[j]);
+                            enemyCollidables.Remove(enemyCollidables[i]);
+                            spawner.SpawnedAsteroids.Remove(spawner.SpawnedAsteroids[i]);
+                            newIteration = true;
+                            break;
+                        }
+                        else if (projectileCollidables[j].transform.position.y > height)
+                        {
+                            projectileCollidables[j].IsColliding = true;
+                            Destroy(projectileCollidables[j].gameObject);
+                            Destroy(projectiles.SpawnedProjectiles[j].gameObject);
+                            projectileCollidables.Remove(projectileCollidables[j]);
+                            projectiles.SpawnedProjectiles.Remove(projectiles.SpawnedProjectiles[j]);
+                            newIteration = true;
+                            break;
+                        }
+                        else
+                        {
+                            enemyCollidables[i].IsColliding = false;
+                            projectileCollidables[j].IsColliding = false;
+                        }
+                    }
+
+                    if (enemyCollidables[i].transform.position.y < (0 - height / 2))
+                    {
+                        enemyCollidables[i].IsColliding = true;
+                        Destroy(enemyCollidables[i].gameObject);
+                        enemyCollidables.Remove(enemyCollidables[i]);
                         newIteration = true;
                         break;
                     }
-                    else
-                    {
-                        enemyCollidables[i].IsColliding = false;
-                        projectileCollidables[j].IsColliding = false;
-                    }
                 }
-
-                if (enemyCollidables[i].transform.position.y < (0 - height / 2))
-                {
-                    enemyCollidables[i].IsColliding = true;
-                    Destroy(enemyCollidables[i].gameObject);
-                    enemyCollidables.Remove(enemyCollidables[i]);
-                    newIteration = true;
-                    break;
-                }
-            }
+            }    
         }
         while (newIteration != true);
     }
