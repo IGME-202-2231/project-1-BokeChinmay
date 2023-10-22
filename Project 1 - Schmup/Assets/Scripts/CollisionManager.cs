@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CollisionManager : MonoBehaviour
 {
@@ -18,9 +19,26 @@ public class CollisionManager : MonoBehaviour
     [SerializeField]
     PlayerFire projectiles;
 
+    [SerializeField]
+    SceneSwitcher sceneSwitcher;
+
+    [SerializeField]
+    Text healthBar;
+
+    [SerializeField]
+    Text playerScore;
+
     Camera cam;
     float height;
     float width;
+
+    //Score
+    int score = 0;
+    int multiplier = 1;
+    int health = 3;
+
+    //End 
+    bool end = false;
 
     // Start is called before the first frame update
     void Start()
@@ -44,6 +62,11 @@ public class CollisionManager : MonoBehaviour
     {
         playerEnemy();
         projectileEnemy();
+
+        if(health <= 0)
+        {
+            sceneSwitcher.LoadScene();
+        }
     }
 
     bool AABBCheck(SpriteInfo spriteA, SpriteInfo spriteB)
@@ -63,90 +86,79 @@ public class CollisionManager : MonoBehaviour
     }
     void playerEnemy()
     {
-        bool newIteration;
-        do
+        for (int i = enemyCollidables.Count - 1; i >= 0; i--)
         {
-            newIteration = false;
-            if(enemyCollidables.Count > 0)
+            if(spawner.SpawnedAsteroids.Count != 0)
             {
-                //newIteration = false;
-                for (int i = 0; i < enemyCollidables.Count; i++)
+                SpriteInfo asteroid = spawner.SpawnedAsteroids[i].GetComponent<SpriteInfo>();
+
+                if (AABBCheck(playerCollidable, asteroid))
                 {
-                    if ((enemyCollidables[i].IsColliding = AABBCheck(playerCollidable, enemyCollidables[i])))
-                    {
-                        playerCollidable.IsColliding = true;
-                        Destroy(enemyCollidables[i].gameObject);
-                        Destroy(spawner.SpawnedAsteroids[i].gameObject);
-                        enemyCollidables.Remove(enemyCollidables[i]);
-                        spawner.SpawnedAsteroids.Remove(spawner.SpawnedAsteroids[i]);
-                        newIteration = true;
-                        break;
-                    }
-                    else
-                    {
-                        playerCollidable.IsColliding = false;
-                    }
+                    GameObject enemy = spawner.SpawnedAsteroids[i].gameObject;
+
+                    spawner.SpawnedAsteroids.RemoveAt(i);
+                    Destroy(enemy);
+
+                    health--;
+                    healthBar.text = "Health: " + health;
                 }
             }
-            
         }
-        while (newIteration != true);
     }
 
     void projectileEnemy()
     {
-        bool newIteration = true;
-        do
+        for (int i = spawner.SpawnedAsteroids.Count - 1; i >= 0; i--)
         {
-            if (enemyCollidables.Count > 0)
+            for (int j = projectiles.SpawnedProjectiles.Count - 1; j >= 0; j--)
             {
-                //newIteration = false;
-                for (int i = 0; i < enemyCollidables.Count; i++)
+                if(spawner.SpawnedAsteroids.Count != 0 && projectiles.SpawnedProjectiles.Count != 0)
                 {
-                    for (int j = 0; j < projectileCollidables.Count; j++)
-                    {
-                        if ((enemyCollidables[i].IsColliding = AABBCheck(projectileCollidables[j], enemyCollidables[i])))
-                        {
-                            projectileCollidables[j].IsColliding = true;
-                            Destroy(projectileCollidables[j].gameObject);
-                            Destroy(projectiles.SpawnedProjectiles[j].gameObject);
-                            Destroy(enemyCollidables[i].gameObject);
-                            Destroy(spawner.SpawnedAsteroids[i].gameObject);
-                            projectileCollidables.Remove(projectileCollidables[j]);
-                            projectiles.SpawnedProjectiles.Remove(projectiles.SpawnedProjectiles[j]);
-                            enemyCollidables.Remove(enemyCollidables[i]);
-                            spawner.SpawnedAsteroids.Remove(spawner.SpawnedAsteroids[i]);
-                            newIteration = true;
-                            break;
-                        }
-                        else if (projectileCollidables[j].transform.position.y > height)
-                        {
-                            projectileCollidables[j].IsColliding = true;
-                            Destroy(projectileCollidables[j].gameObject);
-                            Destroy(projectiles.SpawnedProjectiles[j].gameObject);
-                            projectileCollidables.Remove(projectileCollidables[j]);
-                            projectiles.SpawnedProjectiles.Remove(projectiles.SpawnedProjectiles[j]);
-                            newIteration = true;
-                            break;
-                        }
-                        else
-                        {
-                            enemyCollidables[i].IsColliding = false;
-                            projectileCollidables[j].IsColliding = false;
-                        }
-                    }
+                    SpriteInfo asteroid = spawner.SpawnedAsteroids[i].GetComponent<SpriteInfo>(); 
+                    SpriteInfo projectile = projectiles.SpawnedProjectiles[j].GetComponent<SpriteInfo>();
 
-                    if (enemyCollidables[i].transform.position.y < (0 - height / 2))
+                    if (AABBCheck(projectile, asteroid))
                     {
-                        enemyCollidables[i].IsColliding = true;
-                        Destroy(enemyCollidables[i].gameObject);
-                        enemyCollidables.Remove(enemyCollidables[i]);
-                        newIteration = true;
-                        break;
+                        GameObject shot = projectiles.SpawnedProjectiles[j].gameObject;
+                        GameObject enemy = spawner.SpawnedAsteroids[i].gameObject;
+
+
+                        //projectiles.SpawnedProjectiles.RemoveAt(j);
+
+                        //spawner.SpawnedAsteroids.RemoveAt(i);
+
+                        //Destroy(projectileCollidables[j].gameObject);
+                        //Destroy(projectiles.SpawnedProjectiles[j].gameObject);
+                        //Destroy(enemyCollidables[i].gameObject);
+                        //Destroy(spawner.SpawnedAsteroids[i].gameObject);
+
+                        projectiles.SpawnedProjectiles.RemoveAt(j);
+                        spawner.SpawnedAsteroids.RemoveAt(i);
+                        Destroy(shot);
+                        Destroy(enemy);
+
+                        multiplier++;
+                        score = score * multiplier;
+                        playerScore.text = "Score: " + score;
                     }
+                    /*
+                    else
+                    {
+                        enemyCollidables[i].IsColliding = false;
+                        projectileCollidables[j].IsColliding = false;
+                    }
+                    */
                 }
-            }    
+
+                if (spawner.SpawnedAsteroids[i].transform.position.y < (0 - height / 2))
+                {
+                    Destroy(spawner.SpawnedAsteroids[i].gameObject);
+                    spawner.SpawnedAsteroids.RemoveAt(i);
+
+                    multiplier = 1;
+                }
+            }
+                
         }
-        while (newIteration != true);
     }
 }

@@ -18,6 +18,8 @@ public class SpriteInfo : MonoBehaviour
         get { return rectSize; }
     }
 
+    SpriteRenderer spriteRenderer = new SpriteRenderer();
+
     //Properties for Min and Max
     public Vector2 RectMin
     {
@@ -52,9 +54,13 @@ public class SpriteInfo : MonoBehaviour
     public SpriteRenderer Renderer
     {
         get { return renderer; } 
-        set { renderer = value; }
     }
     
+    public Sprite Sprite
+    {
+        set { spriteRenderer.sprite = value; }
+
+    }
 
     private void Start()
     {

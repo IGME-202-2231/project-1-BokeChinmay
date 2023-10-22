@@ -9,7 +9,7 @@ public class MovementController : MonoBehaviour
 
     //How fast the vehicle will move in units per second
     [SerializeField]
-    float speed = 1.0f;
+    float speed = 5.0f;
 
     //Direction Vector
     Vector3 direction = Vector3.zero;

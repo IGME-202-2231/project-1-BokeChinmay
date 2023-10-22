@@ -201,6 +201,51 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 102967205}
   m_CullTransparentMesh: 1
+--- !u!1 &432811961
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 432811963}
+  - component: {fileID: 432811962}
+  m_Layer: 0
+  m_Name: Scene Switcher
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &432811962
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 432811961}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 280040e08edb2f1409c8b9bd81a4cf05, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneToLoad: EndScene
+--- !u!4 &432811963
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 432811961}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.8525233, y: 0.37993124, z: -0.028124157}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -384,6 +429,7 @@ GameObject:
   - component: {fileID: 901601532}
   - component: {fileID: 901601531}
   - component: {fileID: 901601530}
+  - component: {fileID: 901601533}
   m_Layer: 0
   m_Name: EventSystem
   m_TagString: Untagged
@@ -451,6 +497,24 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &901601533
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 901601529}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6bf83db44a010b42ad6c96488f6d62e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerCollidable: {fileID: 0}
+  spawner: {fileID: 0}
+  projectiles: {fileID: 0}
+  sceneSwitcher: {fileID: 0}
+  healthBar: {fileID: 0}
+  playerScore: {fileID: 0}
 --- !u!1 &915737282 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3979646910112527784, guid: b50272dc256d19049a9fab3183117ac9, type: 3}
@@ -772,6 +836,9 @@ MonoBehaviour:
   playerCollidable: {fileID: 915737288}
   spawner: {fileID: 2057546383}
   projectiles: {fileID: 915737294}
+  sceneSwitcher: {fileID: 432811962}
+  healthBar: {fileID: 2058688678}
+  playerScore: {fileID: 770193445}
 --- !u!4 &1932280835
 Transform:
   m_ObjectHideFlags: 0
