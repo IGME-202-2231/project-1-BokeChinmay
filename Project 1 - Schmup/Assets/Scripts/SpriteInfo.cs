@@ -18,7 +18,7 @@ public class SpriteInfo : MonoBehaviour
         get { return rectSize; }
     }
 
-    SpriteRenderer spriteRenderer = new SpriteRenderer();
+    SpriteRenderer spriteRenderer;
 
     //Properties for Min and Max
     public Vector2 RectMin
@@ -42,7 +42,7 @@ public class SpriteInfo : MonoBehaviour
     bool isColliding = false;
 
     //Sprite Renderer
-    SpriteRenderer renderer;
+    //SpriteRenderer renderer;
 
     public bool IsColliding
     {
@@ -53,17 +53,20 @@ public class SpriteInfo : MonoBehaviour
     
     public SpriteRenderer Renderer
     {
-        get { return renderer; } 
+        get { return spriteRenderer; } 
     }
     
+    /*
     public Sprite Sprite
     {
         set { spriteRenderer.sprite = value; }
 
     }
+    */
 
     private void Start()
     {
         position = transform.position;
+        spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
     }
 }
