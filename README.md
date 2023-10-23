@@ -1,5 +1,6 @@
-Asteroid Boogaloo
 [Markdown Cheatsheet](https://github.com/adam-p/markdown-here/wiki/Markdown-Here-Cheatsheet)
+
+Asteroid Boogaloo
 
 ### Student Info
 
@@ -48,6 +49,8 @@ Whenever enemies go beyond the screen the multiplier resets. Taking damage also 
 ## Known Issues
 
 _List any errors, lack of error checking, or specific information that I need to know to run your program_
+
+No known errors, the code should run fine. 
 
 ### Requirements not completed
 
