@@ -34,6 +34,7 @@ Destroy all the asteroids.
 _List out what you added to your game to make it different for you_
 
 Some bigger enemies split into two.
+Whenever enemies go beyond the screen the multiplier resets. Taking damage also resets the score multiplier.
 
 ## Sources
 
@@ -41,6 +42,7 @@ Some bigger enemies split into two.
 -   _If an asset is from the Unity store, include a link to the page and the author’s name_
 
 -   https://www.artstation.com/artwork/ZGoDNR - Alexey Rozhkov
+-   
 
 ## Known Issues
 
