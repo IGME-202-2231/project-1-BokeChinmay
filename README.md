@@ -49,6 +49,8 @@ Whenever enemies go beyond the screen the multiplier resets. Taking damage also 
 
 _List any errors, lack of error checking, or specific information that I need to know to run your program_
 
+No known errors, the code should run fine. 
+
 ### Requirements not completed
 
 _If you did not complete a project requirement, notate that here_
