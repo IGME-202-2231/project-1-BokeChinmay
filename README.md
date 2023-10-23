@@ -41,7 +41,8 @@ Whenever enemies go beyond the screen the multiplier resets. Taking damage also 
 -   _List all project sources here –models, textures, sound clips, assets, etc._
 -   _If an asset is from the Unity store, include a link to the page and the author’s name_
 
--   https://www.artstation.com/artwork/ZGoDNR - Alexey Rozhkov
+-   https://www.artstation.com/artwork/ZGoDNR - Alexey Rozhkov - Spaceship Sprite
+-   https://assetstore.unity.com/packages/2d/environments/2d-pixel-asteroids-136477 - Asteroid Sprite 
 -   
 
 ## Known Issues
