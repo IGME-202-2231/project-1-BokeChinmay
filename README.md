@@ -18,7 +18,7 @@ Asteroid Boogaloo
 
 _A brief explanation of your game. Include what is the objective for the player. Think about what would go on the back of a game box._
 
-Destroy all the asteroids.
+Destroy all the asteroids, and build your high score. The player has 3 hitpoints.
 
 ### Controls
 
@@ -33,7 +33,7 @@ Destroy all the asteroids.
 
 _List out what you added to your game to make it different for you_
 
-Some bigger enemies split into two.
+A bigger enemy that has 2 hitpoints, turns into the smaller enemy on getting hit.
 Whenever enemies go beyond the screen the multiplier resets. Taking damage also resets the score multiplier.
 
 ## Sources
@@ -41,7 +41,8 @@ Whenever enemies go beyond the screen the multiplier resets. Taking damage also 
 -   _List all project sources here –models, textures, sound clips, assets, etc._
 -   _If an asset is from the Unity store, include a link to the page and the author’s name_
 
--   https://www.artstation.com/artwork/ZGoDNR - Alexey Rozhkov
+-   https://www.artstation.com/artwork/ZGoDNR - Alexey Rozhkov - Spaceship Sprite
+-   https://assetstore.unity.com/packages/2d/environments/2d-pixel-asteroids-136477 - Asteroid Sprite 
 -   
 
 ## Known Issues
