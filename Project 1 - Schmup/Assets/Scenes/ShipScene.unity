@@ -429,7 +429,6 @@ GameObject:
   - component: {fileID: 901601532}
   - component: {fileID: 901601531}
   - component: {fileID: 901601530}
-  - component: {fileID: 901601533}
   m_Layer: 0
   m_Name: EventSystem
   m_TagString: Untagged
@@ -497,24 +496,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &901601533
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 901601529}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b6bf83db44a010b42ad6c96488f6d62e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerCollidable: {fileID: 0}
-  spawner: {fileID: 0}
-  projectiles: {fileID: 0}
-  sceneSwitcher: {fileID: 0}
-  healthBar: {fileID: 0}
-  playerScore: {fileID: 0}
 --- !u!1 &915737282 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3979646910112527784, guid: b50272dc256d19049a9fab3183117ac9, type: 3}
@@ -916,6 +897,7 @@ MonoBehaviour:
   asteroidImages:
   - {fileID: 21300000, guid: 5f53fb96bb96a3146a836885a6c4b603, type: 3}
   - {fileID: 21300000, guid: 277ad9024076f494e8cbaa9ffe41bd4c, type: 3}
+  collisionManager: {fileID: 1932280834}
 --- !u!1 &2058688676
 GameObject:
   m_ObjectHideFlags: 0
@@ -1059,6 +1041,10 @@ PrefabInstance:
     - target: {fileID: 1105630033019452736, guid: b50272dc256d19049a9fab3183117ac9, type: 3}
       propertyPath: m_ActionEvents.Array.data[1].m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3546568700752689255, guid: b50272dc256d19049a9fab3183117ac9, type: 3}
+      propertyPath: speed
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 3979646910112527784, guid: b50272dc256d19049a9fab3183117ac9, type: 3}
       propertyPath: m_Name

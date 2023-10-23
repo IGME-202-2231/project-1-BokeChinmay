@@ -98,32 +98,6 @@ public class CollisionManager : MonoBehaviour
         return false;
     }
 
-    /*
-    void playerEnemy()
-    {
-        if (enemyCollidables.Count != 0)
-        {
-            for (int i = enemyCollidables.Count - 1; i >= 0; i--)
-            {
-                SpriteInfo asteroid = enemyCollidables[i].GetComponent<SpriteInfo>();
-
-                if (AABBCheck(playerCollidable, asteroid))
-                {
-                    GameObject enemy = enemyCollidables[i].gameObject;
-
-                    enemyCollidables.RemoveAt(i);
-                    Destroy(enemy);
-
-                    health--;
-                    healthBar.text = "Health: " + health;
-                    multiplier = 1;
-                }
-
-            }
-        }
-    }
-    */
-
     void playerEnemy()
     {
         if (enemyCollidables.Count != 0)
