@@ -1,6 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.ShaderKeywordFilter;
+//using UnityEditor.ShaderKeywordFilter;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -30,7 +30,7 @@ public class PlayerFire : MonoBehaviour
     float height;
     float width;
 
-    int framesToWait = 5;
+    int framesToWait = 1;
     int frameCount = 0;
     bool waiting = false;
 
@@ -60,13 +60,7 @@ public class PlayerFire : MonoBehaviour
             {
                 Spawn();
             }
-
-            frameCount++;
-            if (frameCount >= framesToWait)
-            {
-                frameCount = 0;
-                waiting = true;
-            }
+            waiting = true;
         }
         else
         {
