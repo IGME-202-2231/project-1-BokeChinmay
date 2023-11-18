@@ -5,9 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class SceneSwitcher : MonoBehaviour
 {
-    [SerializeField]
-    string sceneToLoad;
-
+    //[SerializeField]
+    public string sceneToLoad;
 
     public void LoadScene()
     {
